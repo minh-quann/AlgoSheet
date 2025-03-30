@@ -7,9 +7,22 @@ use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\TempImagesController;
 use App\Http\Controllers\admin\SubCategoryController;
 use \Illuminate\Http\Request;
-use Illuminate\Support\Str; 
+use Illuminate\Support\Str;
 Route::get('/', function () {
     return view('welcome');
+});
+
+// Authenticate Route
+Route::middleware(['web'])->group(function () {
+    Route::group(['prefix' => 'account'], function() {
+        Route::group(['middleware' => 'guest'], function() {
+
+        });
+
+        Route::group(['middleware' => 'auth'], function() {
+
+        });
+    });
 });
 
 Route::middleware(['web'])->group(function () {
@@ -51,4 +64,4 @@ Route::middleware(['web'])->group(function () {
             })->name('getSlug');
         });
     });
-});  
+});
