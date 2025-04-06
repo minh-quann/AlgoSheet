@@ -25,6 +25,9 @@
                 </div>
             @endif
 
+
+
+            
             <div class="login-form">
                 <form action="{{ route('account.authenticate') }}" method="post">
                     @csrf
