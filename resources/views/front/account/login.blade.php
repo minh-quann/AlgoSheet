@@ -12,18 +12,19 @@
         </div>
     </section>
 
-    <section class=" section-10">
+    <section class="section-10">
         <div class="container">
             @if(Session::has('success'))
                 <div class="alert alert-success">
                     {{ Session::get('success') }}
                 </div>
             @endif
-                @if(Session::has('error'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('error') }}
-                    </div>
-                @endif
+            @if(Session::has('error'))
+                <div class="alert alert-danger">
+                    {{ Session::get('error') }}
+                </div>
+            @endif
+
             <div class="login-form">
                 <form action="{{ route('account.authenticate') }}" method="post">
                     @csrf
@@ -45,7 +46,25 @@
                     </div>
                     <input type="submit" class="btn btn-dark btn-block btn-lg" value="Login">
                 </form>
-                <div class="text-center small">Don't have an account? <a href="{{ route('account.register') }}">Sign up</a></div>
+
+                <div class="text-center my-3">
+                    <span>or</span>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <a href="{{ route('google.redirect') }}" class="btn btn-light border d-block w-100">
+                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width:20px; margin-right:10px;">
+                        Sign in with Google
+                    </a>
+                    <a href="{{ route('facebook.login') }}" class="btn btn-primary btn-block">
+                        <i class="fab fa-facebook"></i> Đăng nhập bằng Facebook
+                    </a>
+                    
+                </div>
+
+                <div class="text-center small mt-3">
+                    Don't have an account? <a href="{{ route('account.register') }}">Sign up</a>
+                </div>
             </div>
         </div>
     </section>

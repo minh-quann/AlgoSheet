@@ -12,8 +12,8 @@
         </div>
     </section>
 
-    <section class=" section-11 ">
-        <div class="container  mt-5">
+    <section class="section-11">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
                     @include('front.account.common.sidebar')
@@ -27,25 +27,33 @@
                             <div class="row">
                                 <div class="mb-3">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" placeholder="Enter Your Name" class="form-control">
+                                    <input type="text" name="name" id="name" 
+                                           value="{{ old('name', $user->name ?? '') }}" 
+                                           placeholder="Enter Your Name" class="form-control" disabled>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" id="email" placeholder="Enter Your Email" class="form-control">
+                                    <input type="text" name="email" id="email" 
+                                           value="{{ old('email', $user->email ?? '') }}" 
+                                           placeholder="Enter Your Email" class="form-control" disabled>
                                 </div>
                                 <div class="mb-3">
                                     <label for="phone">Phone</label>
-                                    <input type="text" name="phone" id="phone" placeholder="Enter Your Phone" class="form-control">
+                                    <input type="text" name="phone" id="phone" 
+                                           value="{{ old('phone', $user->phone ?? '') }}" 
+                                           placeholder="Enter Your Phone" class="form-control" disabled>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="phone">Address</label>
-                                    <textarea name="address" id="address" class="form-control" cols="30" rows="5" placeholder="Enter Your Address"></textarea>
+                                    <label for="address">Address</label>
+                                    <textarea name="address" id="address" class="form-control" cols="30" rows="5" 
+                                              placeholder="Enter Your Address" disabled>{{ old('address', $user->address ?? '') }}</textarea>
                                 </div>
 
-                                <div class="d-flex">
-                                    <button class="btn btn-dark">Update</button>
-                                </div>
+                                <!-- Nút Chỉnh sửa Profile -->
+                                {{-- <div class="d-flex">
+                                    <a href="{{ route('account.editProfile') }}" class="btn btn-primary">Edit Profile</a>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

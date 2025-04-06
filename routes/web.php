@@ -18,22 +18,28 @@ use Illuminate\Support\Str;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
 
-
-
 // Authenticate Route
 Route::middleware(['web'])->group(function () {
     Route::group(['prefix' => 'account'], function() {
         Route::group(['middleware' => 'guest'], function() {
             Route::get('/login', [AuthController::class, 'login'])->name('account.login');
             Route::post('/login', [AuthController::class, 'authenticate'])->name('account.authenticate');
-
+            
+            Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
+            Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
+            
+            Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('facebook.login');
+            Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
+            
             Route::get('/register', [AuthController::class, 'register'])->name('account.register');
             Route::post('/process-register', [AuthController::class, 'processRegister'])->name('account.processRegister');
+            
+
         });
 
         Route::group(['middleware' => 'auth'], function() {
             Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
-
+            // Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('account.updateProfile');
             Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
         });
     });
@@ -89,6 +95,7 @@ Route::middleware(['web'])->group(function () {
             Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
             Route::delete('/product-images', [ProductImageController::class, 'destroy'])->name('product-images.delete');
 
+            
             Route::get('/getSlug', function (Request $request) {
                 $slug = '';
                 if (!empty($request->title)) {
