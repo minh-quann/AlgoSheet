@@ -139,7 +139,6 @@ public function redirectToFacebook()
     public function handleFacebookCallback()
 {
     $facebookUser = Socialite::driver('facebook')->stateless()->user();
-
     $user = User::where('email', $facebookUser->getEmail())->first();
 
     if (!$user) {

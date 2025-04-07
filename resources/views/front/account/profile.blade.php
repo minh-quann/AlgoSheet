@@ -49,11 +49,6 @@
                                     <textarea name="address" id="address" class="form-control" cols="30" rows="5" 
                                               placeholder="Enter Your Address" disabled>{{ old('address', $user->address ?? '') }}</textarea>
                                 </div>
-
-                                <!-- Nút Chỉnh sửa Profile -->
-                                {{-- <div class="d-flex">
-                                    <a href="{{ route('account.editProfile') }}" class="btn btn-primary">Edit Profile</a>
-                                </div> --}}
                             </div>
                         </div>
                     </div>

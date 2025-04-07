@@ -60,7 +60,7 @@
                         Sign in with Google
                     </a>
                     <a href="{{ route('facebook.login') }}" class="btn btn-primary btn-block">
-                        <i class="fab fa-facebook"></i> Đăng nhập bằng Facebook
+                        <i class="fab fa-facebook"></i> Sign in with Facebook
                     </a>
                     
                 </div>
