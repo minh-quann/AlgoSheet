@@ -1,6 +1,5 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\CategoryController;
@@ -12,11 +11,14 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ShopController;
 use \Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
+Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, 'index'])->name('front.shop');
+Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.product');
 
 // Authenticate Route
 Route::middleware(['web'])->group(function () {
