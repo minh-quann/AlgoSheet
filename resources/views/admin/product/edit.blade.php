@@ -248,7 +248,7 @@
                 url: '{{ route("getSlug") }}',
                 type: 'get',
                 data: {title: element.val()},
-                datType: 'json',
+                dataType: 'json',
                 success: function (response) {
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {
@@ -267,7 +267,7 @@
                 url: '{{ route("products.update", $product->id) }}',
                 type: 'put',
                 data: formArray,
-                datType: 'json',
+                dataType: 'json',
                 success: function (response) {
                     $("button[type='submit']").prop('disabled', false);
                     if (response['status'] == true) {
@@ -302,7 +302,7 @@
                 url: '{{ route("product-subcategories.index") }}',
                 type: 'get',
                 data: {category_id: categoryID},
-                datType: 'json',
+                dataType: 'json',
                 success: function (response) {
                     $("#sub_category").find('option').not(":first").remove();
                     $.each(response["subCategories"], function (key, item) {

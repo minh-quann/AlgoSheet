@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\CategoryController;
@@ -13,8 +14,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ShopController;
-use \Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+//use Illuminate\Support\Str;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
@@ -31,16 +32,16 @@ Route::middleware(['web'])->group(function () {
         Route::group(['middleware' => 'guest'], function() {
             Route::get('/login', [AuthController::class, 'login'])->name('account.login');
             Route::post('/login', [AuthController::class, 'authenticate'])->name('account.authenticate');
-            
+
             Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
             Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
-            
+
             Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('facebook.login');
-            Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
-            
+            Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback'])->name('facebook.callback');
+
             Route::get('/register', [AuthController::class, 'register'])->name('account.register');
             Route::post('/process-register', [AuthController::class, 'processRegister'])->name('account.processRegister');
-            
+
 
         });
 
@@ -97,16 +98,20 @@ Route::middleware(['web'])->group(function () {
 
             // Product Sub-Category Route
             Route::get('/product-subcategories', [ProductSubCategoryController::class, 'index'])->name('product-subcategories.index');
-            
+
             // Product Image Route
             Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
             Route::delete('/product-images', [ProductImageController::class, 'destroy'])->name('product-images.delete');
 
-            
+
             Route::get('/getSlug', function (Request $request) {
                 $slug = '';
                 if (!empty($request->title)) {
-                    $slug = Str::slug($request->title);
+                    if (!empty($request->singer)) {
+                        $slug = Str::slug($request->title . '-' . $request->singer);
+                    } else {
+                        $slug = Str::slug($request->title);
+                    }
                 }
 
                 return response()->json([

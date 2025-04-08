@@ -85,7 +85,7 @@
                 url: '{{ route("sub-categories.update", $subCategory->id) }}',
                 type: 'PUT',
                 data: element.serializeArray(),
-                datType: 'json',
+                dataType: 'json',
                 success: function(response){
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {
@@ -151,7 +151,7 @@
                 url: '{{ route("getSlug") }}',
                 type: 'get',
                 data: {title: element.val()},
-                datType: 'json',
+                dataType: 'json',
                 success: function (response) {
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {

@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::g8uBEjIqwUihWf5x',
+            '_route' => 'generated::IkV4M50B2sapeGb6',
           ),
           1 => NULL,
           2 => 
@@ -47,13 +47,13 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/auth/google' => 
+      '/cart' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'google.redirect',
+            '_route' => 'front.cart',
           ),
           1 => NULL,
           2 => 
@@ -67,19 +67,18 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/auth/google/callback' => 
+      '/add-to-cart' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'google.callback',
+            '_route' => 'front.addToCart',
           ),
           1 => NULL,
           2 => 
           array (
-            'GET' => 0,
-            'HEAD' => 1,
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -87,39 +86,18 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/auth/facebook' => 
+      '/delete-item' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'facebook.login',
+            '_route' => 'front.deleteItem.cart',
           ),
           1 => NULL,
           2 => 
           array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/auth/facebook/callback' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::vlerS1lsOISH8gAw',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
+            'POST' => 0,
           ),
           3 => NULL,
           4 => false,
@@ -156,6 +134,86 @@ app('router')->setCompiledRoutes(
           2 => 
           array (
             'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/account/auth/google' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'google.redirect',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/account/auth/google/callback' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'google.callback',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/account/auth/facebook' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'facebook.login',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/account/auth/facebook/callback' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'facebook.callback',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -665,11 +723,83 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/admin/(?|categories/([^/]++)(?|/edit(*:44)|(*:51))|s(?|ub\\-categories/([^/]++)(?|/edit(*:94)|(*:101))|ongs/([^/]++)(?|/edit(*:131)|(*:139)))|products/([^/]++)(?|/edit(*:174)|(*:182)))|/storage/(.*)(*:205))/?$}sDu',
+      0 => '{^(?|/s(?|hop(?:/([^/]++)(?:/([^/]++))?)?(*:43)|torage/(.*)(*:61))|/product/([^/]++)(*:86)|/admin/(?|categories/([^/]++)(?|/edit(*:130)|(*:138))|s(?|ub\\-categories/([^/]++)(?|/edit(*:182)|(*:190))|ongs/([^/]++)(?|/edit(*:220)|(*:228)))|products/([^/]++)(?|/edit(*:263)|(*:271))))/?$}sDu',
     ),
     3 => 
     array (
-      44 => 
+      43 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.shop',
+            'categorySlug' => NULL,
+            'subCategorySlug' => NULL,
+          ),
+          1 => 
+          array (
+            0 => 'categorySlug',
+            1 => 'subCategorySlug',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      61 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'storage.local',
+          ),
+          1 => 
+          array (
+            0 => 'path',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      86 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.product',
+          ),
+          1 => 
+          array (
+            0 => 'slug',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      130 => 
       array (
         0 => 
         array (
@@ -692,7 +822,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      51 => 
+      138 => 
       array (
         0 => 
         array (
@@ -733,7 +863,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      94 => 
+      182 => 
       array (
         0 => 
         array (
@@ -756,7 +886,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      101 => 
+      190 => 
       array (
         0 => 
         array (
@@ -797,7 +927,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      131 => 
+      220 => 
       array (
         0 => 
         array (
@@ -820,7 +950,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      139 => 
+      228 => 
       array (
         0 => 
         array (
@@ -861,7 +991,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      174 => 
+      263 => 
       array (
         0 => 
         array (
@@ -884,7 +1014,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      182 => 
+      271 => 
       array (
         0 => 
         array (
@@ -924,30 +1054,7 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
-      ),
-      205 => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'storage.local',
-          ),
-          1 => 
-          array (
-            0 => 'path',
-          ),
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => true,
-          6 => NULL,
-        ),
-        1 => 
+        2 => 
         array (
           0 => NULL,
           1 => NULL,
@@ -963,7 +1070,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::g8uBEjIqwUihWf5x' => 
+    'generated::IkV4M50B2sapeGb6' => 
     array (
       'methods' => 
       array (
@@ -973,7 +1080,7 @@ app('router')->setCompiledRoutes(
       'uri' => 'up',
       'action' => 
       array (
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:875:"function () {
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:863:"function () {
                     $exception = null;
 
                     try {
@@ -988,11 +1095,11 @@ app('router')->setCompiledRoutes(
                         $exception = $e->getMessage();
                     }
 
-                    return response(\\Illuminate\\Support\\Facades\\View::file(\'C:\\\\Users\\\\quan\\\\OneDrive\\\\Documents\\\\School\\\\LapTrinhPHP\\\\DoAn\\\\AlgoSheet\\\\vendor\\\\laravel\\\\framework\\\\src\\\\Illuminate\\\\Foundation\\\\Configuration\'.\'/../resources/health-up.blade.php\', [
+                    return response(\\Illuminate\\Support\\Facades\\View::file(\'/Users/tranquangtai/Desktop/HUTECH/K2N4/CMP187/FinalProject/AlgoSheet/vendor/laravel/framework/src/Illuminate/Foundation/Configuration\'.\'/../resources/health-up.blade.php\', [
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000003100000000000000000";}}',
-        'as' => 'generated::g8uBEjIqwUihWf5x',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000003160000000000000000";}}',
+        'as' => 'generated::IkV4M50B2sapeGb6',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1045,28 +1152,28 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'google.redirect' => 
+    'front.shop' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'auth/google',
+      'uri' => 'shop/{categorySlug?}/{subCategorySlug?}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
         ),
-        'uses' => 'App\\Http\\Controllers\\AuthController@redirectToGoogle',
-        'controller' => 'App\\Http\\Controllers\\AuthController@redirectToGoogle',
+        'uses' => 'App\\Http\\Controllers\\ShopController@index',
+        'controller' => 'App\\Http\\Controllers\\ShopController@index',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'google.redirect',
+        'as' => 'front.shop',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1082,28 +1189,28 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'google.callback' => 
+    'front.product' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'auth/google/callback',
+      'uri' => 'product/{slug}',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
         ),
-        'uses' => 'App\\Http\\Controllers\\AuthController@handleGoogleCallback',
-        'controller' => 'App\\Http\\Controllers\\AuthController@handleGoogleCallback',
+        'uses' => 'App\\Http\\Controllers\\ShopController@product',
+        'controller' => 'App\\Http\\Controllers\\ShopController@product',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'google.callback',
+        'as' => 'front.product',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1119,28 +1226,28 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'facebook.login' => 
+    'front.cart' => 
     array (
       'methods' => 
       array (
         0 => 'GET',
         1 => 'HEAD',
       ),
-      'uri' => 'auth/facebook',
+      'uri' => 'cart',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
         ),
-        'uses' => 'App\\Http\\Controllers\\AuthController@redirectToFacebook',
-        'controller' => 'App\\Http\\Controllers\\AuthController@redirectToFacebook',
+        'uses' => 'App\\Http\\Controllers\\CartController@cart',
+        'controller' => 'App\\Http\\Controllers\\CartController@cart',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'facebook.login',
+        'as' => 'front.cart',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1156,28 +1263,63 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
-    'generated::vlerS1lsOISH8gAw' => 
+    'front.addToCart' => 
     array (
       'methods' => 
       array (
-        0 => 'GET',
-        1 => 'HEAD',
+        0 => 'POST',
       ),
-      'uri' => 'auth/facebook/callback',
+      'uri' => 'add-to-cart',
       'action' => 
       array (
         'middleware' => 
         array (
           0 => 'web',
         ),
-        'uses' => 'App\\Http\\Controllers\\AuthController@handleFacebookCallback',
-        'controller' => 'App\\Http\\Controllers\\AuthController@handleFacebookCallback',
+        'uses' => 'App\\Http\\Controllers\\CartController@addToCart',
+        'controller' => 'App\\Http\\Controllers\\CartController@addToCart',
         'namespace' => NULL,
         'prefix' => '',
         'where' => 
         array (
         ),
-        'as' => 'generated::vlerS1lsOISH8gAw',
+        'as' => 'front.addToCart',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'front.deleteItem.cart' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'delete-item',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@deleteItem',
+        'controller' => 'App\\Http\\Controllers\\CartController@deleteItem',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.deleteItem.cart',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1255,6 +1397,162 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'account.authenticate',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'google.redirect' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'account/auth/google',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@redirectToGoogle',
+        'controller' => 'App\\Http\\Controllers\\AuthController@redirectToGoogle',
+        'namespace' => NULL,
+        'prefix' => '/account',
+        'where' => 
+        array (
+        ),
+        'as' => 'google.redirect',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'google.callback' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'account/auth/google/callback',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@handleGoogleCallback',
+        'controller' => 'App\\Http\\Controllers\\AuthController@handleGoogleCallback',
+        'namespace' => NULL,
+        'prefix' => '/account',
+        'where' => 
+        array (
+        ),
+        'as' => 'google.callback',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'facebook.login' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'account/auth/facebook',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@redirectToFacebook',
+        'controller' => 'App\\Http\\Controllers\\AuthController@redirectToFacebook',
+        'namespace' => NULL,
+        'prefix' => '/account',
+        'where' => 
+        array (
+        ),
+        'as' => 'facebook.login',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'facebook.callback' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'account/auth/facebook/callback',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'guest',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@handleFacebookCallback',
+        'controller' => 'App\\Http\\Controllers\\AuthController@handleFacebookCallback',
+        'namespace' => NULL,
+        'prefix' => '/account',
+        'where' => 
+        array (
+        ),
+        'as' => 'facebook.callback',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2712,17 +3010,21 @@ app('router')->setCompiledRoutes(
           1 => 'web',
           2 => 'admin.auth',
         ),
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:351:"function (\\Request $request) {
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:0:{}s:8:"function";s:541:"function (\\Illuminate\\Http\\Request $request) {
                 $slug = \'\';
                 if (!empty($request->title)) {
-                    $slug = \\Illuminate\\Support\\Str::slug($request->title);
+                    if (!empty($request->singer)) {
+                        $slug = \\Str::slug($request->title . \'-\' . $request->singer);
+                    } else {
+                        $slug = \\Str::slug($request->title);
+                    }
                 }
 
                 return \\response()->json([
                     \'status\' => true,
                     \'slug\' => $slug
                 ]);
-            }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003440000000000000000";}}',
+            }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000034f0000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -2754,13 +3056,13 @@ app('router')->setCompiledRoutes(
       'uri' => 'storage/{path}',
       'action' => 
       array (
-        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:3:{s:4:"disk";s:5:"local";s:6:"config";a:5:{s:6:"driver";s:5:"local";s:4:"root";s:86:"C:\\Users\\quan\\OneDrive\\Documents\\School\\LapTrinhPHP\\DoAn\\AlgoSheet\\storage\\app/private";s:5:"serve";b:1;s:5:"throw";b:0;s:6:"report";b:0;}s:12:"isProduction";b:0;}s:8:"function";s:323:"function (\\Illuminate\\Http\\Request $request, string $path) use ($disk, $config, $isProduction) {
+        'uses' => 'O:55:"Laravel\\SerializableClosure\\UnsignedSerializableClosure":1:{s:12:"serializable";O:46:"Laravel\\SerializableClosure\\Serializers\\Native":5:{s:3:"use";a:3:{s:4:"disk";s:5:"local";s:6:"config";a:5:{s:6:"driver";s:5:"local";s:4:"root";s:89:"/Users/tranquangtai/Desktop/HUTECH/K2N4/CMP187/FinalProject/AlgoSheet/storage/app/private";s:5:"serve";b:1;s:5:"throw";b:0;s:6:"report";b:0;}s:12:"isProduction";b:0;}s:8:"function";s:323:"function (\\Illuminate\\Http\\Request $request, string $path) use ($disk, $config, $isProduction) {
                     return (new \\Illuminate\\Filesystem\\ServeFile(
                         $disk,
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000003190000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000003200000000000000000";}}',
         'as' => 'storage.local',
       ),
       'fallback' => false,

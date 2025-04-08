@@ -85,7 +85,7 @@
                 url: '{{ route("songs.update", $song->id) }}',
                 type: 'PUT',
                 data: element.serializeArray(),
-                datType: 'json',
+                dataType: 'json',
                 success: function(response){
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {
@@ -168,7 +168,7 @@
                 url: '{{ route("getSlug") }}',
                 type: 'get',
                 data: {title: title, singer: singer},
-                datType: 'json',
+                dataType: 'json',
                 success: function (response) {
                     $("button[type=submit]").prop('disabled', false);
                     if (response["status"] == true) {

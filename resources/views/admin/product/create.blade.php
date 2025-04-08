@@ -270,7 +270,7 @@
                 url: '{{ route("product-subcategories.index") }}',
                 type: 'get',
                 data: {category_id: categoryID},
-                datType: 'json',
+                dataType: 'json',
                 success: function (response) {
                    $("#sub_category").find('option').not(":first").remove();
                    $.each(response["subCategories"], function (key, item) {
