@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::IkV4M50B2sapeGb6',
+            '_route' => 'generated::ktnq7wKM7CjQZXXM',
           ),
           1 => NULL,
           2 => 
@@ -98,6 +98,65 @@ app('router')->setCompiledRoutes(
           2 => 
           array (
             'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/checkout' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.checkout',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/prepare-payment' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.preparePayment',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/payment-success' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.paymentSuccess',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -723,7 +782,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/s(?|hop(?:/([^/]++)(?:/([^/]++))?)?(*:43)|torage/(.*)(*:61))|/product/([^/]++)(*:86)|/admin/(?|categories/([^/]++)(?|/edit(*:130)|(*:138))|s(?|ub\\-categories/([^/]++)(?|/edit(*:182)|(*:190))|ongs/([^/]++)(?|/edit(*:220)|(*:228)))|products/([^/]++)(?|/edit(*:263)|(*:271))))/?$}sDu',
+      0 => '{^(?|/s(?|hop(?:/([^/]++)(?:/([^/]++))?)?(*:43)|torage/(.*)(*:61))|/product/([^/]++)(*:86)|/thanks/([^/]++)(*:109)|/admin/(?|categories/([^/]++)(?|/edit(*:154)|(*:162))|s(?|ub\\-categories/([^/]++)(?|/edit(*:206)|(*:214))|ongs/([^/]++)(?|/edit(*:244)|(*:252)))|products/([^/]++)(?|/edit(*:287)|(*:295))))/?$}sDu',
     ),
     3 => 
     array (
@@ -799,7 +858,30 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      130 => 
+      109 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.thanks',
+          ),
+          1 => 
+          array (
+            0 => 'orderId',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      154 => 
       array (
         0 => 
         array (
@@ -822,7 +904,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      138 => 
+      162 => 
       array (
         0 => 
         array (
@@ -863,7 +945,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      182 => 
+      206 => 
       array (
         0 => 
         array (
@@ -886,7 +968,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      190 => 
+      214 => 
       array (
         0 => 
         array (
@@ -927,7 +1009,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      220 => 
+      244 => 
       array (
         0 => 
         array (
@@ -950,7 +1032,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      228 => 
+      252 => 
       array (
         0 => 
         array (
@@ -991,7 +1073,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      263 => 
+      287 => 
       array (
         0 => 
         array (
@@ -1014,7 +1096,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      271 => 
+      295 => 
       array (
         0 => 
         array (
@@ -1070,7 +1152,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::IkV4M50B2sapeGb6' => 
+    'generated::ktnq7wKM7CjQZXXM' => 
     array (
       'methods' => 
       array (
@@ -1098,8 +1180,8 @@ app('router')->setCompiledRoutes(
                     return response(\\Illuminate\\Support\\Facades\\View::file(\'/Users/tranquangtai/Desktop/HUTECH/K2N4/CMP187/FinalProject/AlgoSheet/vendor/laravel/framework/src/Illuminate/Foundation/Configuration\'.\'/../resources/health-up.blade.php\', [
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
-                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000003160000000000000000";}}',
-        'as' => 'generated::IkV4M50B2sapeGb6',
+                }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000002e40000000000000000";}}',
+        'as' => 'generated::ktnq7wKM7CjQZXXM',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1320,6 +1402,153 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'front.deleteItem.cart',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'front.checkout' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'checkout',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@checkout',
+        'controller' => 'App\\Http\\Controllers\\CartController@checkout',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.checkout',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'front.thanks' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'thanks/{orderId}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@thankyou',
+        'controller' => 'App\\Http\\Controllers\\CartController@thankyou',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.thanks',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'front.preparePayment' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'prepare-payment',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@preparePayment',
+        'controller' => 'App\\Http\\Controllers\\CartController@preparePayment',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.preparePayment',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'front.paymentSuccess' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'payment-success',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@paymentSuccess',
+        'controller' => 'App\\Http\\Controllers\\CartController@paymentSuccess',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.paymentSuccess',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3024,7 +3253,7 @@ app('router')->setCompiledRoutes(
                     \'status\' => true,
                     \'slug\' => $slug
                 ]);
-            }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000000000034f0000000000000000";}}',
+            }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003210000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -3062,7 +3291,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000003200000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000002f20000000000000000";}}',
         'as' => 'storage.local',
       ),
       'fallback' => false,

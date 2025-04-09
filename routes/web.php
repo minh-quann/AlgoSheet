@@ -24,6 +24,10 @@ Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.p
 Route::get('/cart', [CartController::class, 'cart'])->name('front.cart');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
 Route::post('/delete-item', [CartController::class, 'deleteItem'])->name('front.deleteItem.cart');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');
+Route::get('/thanks/{orderId}', [CartController::class, 'thankyou'])->name('front.thanks');
+Route::post('/prepare-payment', [CartController::class, 'preparePayment'])->name('front.preparePayment');
+Route::get('/payment-success', [CartController::class, 'paymentSuccess'])->name('front.paymentSuccess');
 
 
 // Authenticate Route
