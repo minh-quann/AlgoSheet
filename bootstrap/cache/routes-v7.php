@@ -13,7 +13,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ktnq7wKM7CjQZXXM',
+            '_route' => 'generated::FPIIAnLZ1lgDkVoK',
           ),
           1 => NULL,
           2 => 
@@ -151,6 +151,26 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'front.paymentSuccess',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/payment-failed' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.paymentFailed',
           ),
           1 => NULL,
           2 => 
@@ -326,6 +346,26 @@ app('router')->setCompiledRoutes(
           0 => 
           array (
             '_route' => 'account.profile',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/account/my-orders' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'account.orders',
           ),
           1 => NULL,
           2 => 
@@ -759,6 +799,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/admin/orders' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'orders.index',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/admin/getSlug' => 
       array (
         0 => 
@@ -782,7 +842,7 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/s(?|hop(?:/([^/]++)(?:/([^/]++))?)?(*:43)|torage/(.*)(*:61))|/product/([^/]++)(*:86)|/thanks/([^/]++)(*:109)|/admin/(?|categories/([^/]++)(?|/edit(*:154)|(*:162))|s(?|ub\\-categories/([^/]++)(?|/edit(*:206)|(*:214))|ongs/([^/]++)(?|/edit(*:244)|(*:252)))|products/([^/]++)(?|/edit(*:287)|(*:295))))/?$}sDu',
+      0 => '{^(?|/s(?|hop(?:/([^/]++)(?:/([^/]++))?)?(*:43)|torage/(.*)(*:61))|/product/([^/]++)(*:86)|/thanks/([^/]++)(*:109)|/error/([^/]++)(*:132)|/a(?|ccount/order\\-detail/([^/]++)(*:174)|dmin/(?|categories/([^/]++)(?|/edit(*:217)|(*:225))|s(?|ub\\-categories/([^/]++)(?|/edit(*:269)|(*:277))|ongs/([^/]++)(?|/edit(*:307)|(*:315)))|products/([^/]++)(?|/edit(*:350)|(*:358))|orders/(?|([^/]++)(*:385)|change\\-status/([^/]++)(*:416)))))/?$}sDu',
     ),
     3 => 
     array (
@@ -881,7 +941,53 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      154 => 
+      132 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'front.failed',
+          ),
+          1 => 
+          array (
+            0 => 'orderId',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      174 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'account.orderDetail',
+          ),
+          1 => 
+          array (
+            0 => 'orderId',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      217 => 
       array (
         0 => 
         array (
@@ -904,7 +1010,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      162 => 
+      225 => 
       array (
         0 => 
         array (
@@ -945,7 +1051,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      206 => 
+      269 => 
       array (
         0 => 
         array (
@@ -968,7 +1074,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      214 => 
+      277 => 
       array (
         0 => 
         array (
@@ -1009,7 +1115,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      244 => 
+      307 => 
       array (
         0 => 
         array (
@@ -1032,7 +1138,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      252 => 
+      315 => 
       array (
         0 => 
         array (
@@ -1073,7 +1179,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      287 => 
+      350 => 
       array (
         0 => 
         array (
@@ -1096,7 +1202,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      295 => 
+      358 => 
       array (
         0 => 
         array (
@@ -1136,7 +1242,52 @@ app('router')->setCompiledRoutes(
           5 => true,
           6 => NULL,
         ),
-        2 => 
+      ),
+      385 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'orders.detail',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      416 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'orders.changeOrderStatus',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'POST' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
         array (
           0 => NULL,
           1 => NULL,
@@ -1152,7 +1303,7 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::ktnq7wKM7CjQZXXM' => 
+    'generated::FPIIAnLZ1lgDkVoK' => 
     array (
       'methods' => 
       array (
@@ -1181,7 +1332,7 @@ app('router')->setCompiledRoutes(
                         \'exception\' => $exception,
                     ]), status: $exception ? 500 : 200);
                 }";s:5:"scope";s:54:"Illuminate\\Foundation\\Configuration\\ApplicationBuilder";s:4:"this";N;s:4:"self";s:32:"00000000000002e40000000000000000";}}',
-        'as' => 'generated::ktnq7wKM7CjQZXXM',
+        'as' => 'generated::FPIIAnLZ1lgDkVoK',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1491,6 +1642,43 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'front.failed' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'error/{orderId}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@error',
+        'controller' => 'App\\Http\\Controllers\\CartController@error',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.failed',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'front.preparePayment' => 
     array (
       'methods' => 
@@ -1549,6 +1737,43 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'front.paymentSuccess',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'front.paymentFailed' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'payment-failed',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+        ),
+        'uses' => 'App\\Http\\Controllers\\CartController@paymentFailed',
+        'controller' => 'App\\Http\\Controllers\\CartController@paymentFailed',
+        'namespace' => NULL,
+        'prefix' => '',
+        'where' => 
+        array (
+        ),
+        'as' => 'front.paymentFailed',
       ),
       'fallback' => false,
       'defaults' => 
@@ -1898,6 +2123,84 @@ app('router')->setCompiledRoutes(
         array (
         ),
         'as' => 'account.profile',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'account.orders' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'account/my-orders',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@myorders',
+        'controller' => 'App\\Http\\Controllers\\AuthController@myorders',
+        'namespace' => NULL,
+        'prefix' => '/account',
+        'where' => 
+        array (
+        ),
+        'as' => 'account.orders',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'account.orderDetail' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'account/order-detail/{orderId}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\AuthController@orderDetail',
+        'controller' => 'App\\Http\\Controllers\\AuthController@orderDetail',
+        'namespace' => NULL,
+        'prefix' => '/account',
+        'where' => 
+        array (
+        ),
+        'as' => 'account.orderDetail',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3223,6 +3526,122 @@ app('router')->setCompiledRoutes(
       'waitSeconds' => NULL,
       'withTrashed' => false,
     ),
+    'orders.index' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/orders',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'admin.auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\admin\\OrderController@index',
+        'controller' => 'App\\Http\\Controllers\\admin\\OrderController@index',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'orders.index',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'orders.detail' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'admin/orders/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'admin.auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\admin\\OrderController@detail',
+        'controller' => 'App\\Http\\Controllers\\admin\\OrderController@detail',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'orders.detail',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
+    'orders.changeOrderStatus' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'POST',
+      ),
+      'uri' => 'admin/orders/change-status/{id}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'web',
+          2 => 'admin.auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\admin\\OrderController@changeOrderStatus',
+        'controller' => 'App\\Http\\Controllers\\admin\\OrderController@changeOrderStatus',
+        'namespace' => NULL,
+        'prefix' => '/admin',
+        'where' => 
+        array (
+        ),
+        'as' => 'orders.changeOrderStatus',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+      'withTrashed' => false,
+    ),
     'getSlug' => 
     array (
       'methods' => 
@@ -3253,7 +3672,7 @@ app('router')->setCompiledRoutes(
                     \'status\' => true,
                     \'slug\' => $slug
                 ]);
-            }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003210000000000000000";}}',
+            }";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"00000000000003280000000000000000";}}',
         'namespace' => NULL,
         'prefix' => '/admin',
         'where' => 
@@ -3291,7 +3710,7 @@ app('router')->setCompiledRoutes(
                         $config,
                         $isProduction
                     ))($request, $path);
-                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000002f20000000000000000";}}',
+                }";s:5:"scope";s:47:"Illuminate\\Filesystem\\FilesystemServiceProvider";s:4:"this";N;s:4:"self";s:32:"00000000000002f40000000000000000";}}',
         'as' => 'storage.local',
       ),
       'fallback' => false,

@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\SongController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
@@ -26,8 +27,10 @@ Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.a
 Route::post('/delete-item', [CartController::class, 'deleteItem'])->name('front.deleteItem.cart');
 Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');
 Route::get('/thanks/{orderId}', [CartController::class, 'thankyou'])->name('front.thanks');
+Route::get('/error/{orderId}', [CartController::class, 'error'])->name('front.failed');
 Route::post('/prepare-payment', [CartController::class, 'preparePayment'])->name('front.preparePayment');
 Route::get('/payment-success', [CartController::class, 'paymentSuccess'])->name('front.paymentSuccess');
+Route::get('/payment-failed', [CartController::class, 'paymentFailed'])->name('front.paymentFailed');
 
 
 // Authenticate Route
@@ -52,6 +55,8 @@ Route::middleware(['web'])->group(function () {
         Route::group(['middleware' => 'auth'], function() {
             Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
             // Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('account.updateProfile');
+            Route::get('/my-orders', [AuthController::class, 'myorders'])->name('account.orders');
+            Route::get('/order-detail/{orderId}', [AuthController::class, 'orderDetail'])->name('account.orderDetail');
             Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
         });
     });
@@ -106,6 +111,11 @@ Route::middleware(['web'])->group(function () {
             // Product Image Route
             Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
             Route::delete('/product-images', [ProductImageController::class, 'destroy'])->name('product-images.delete');
+
+            // Order Route
+            Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+            Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+            Route::post('/orders/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
 
 
             Route::get('/getSlug', function (Request $request) {

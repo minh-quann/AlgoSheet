@@ -155,8 +155,9 @@ class CartController extends Controller
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = "Thanh toán qua MoMo";
-        $subtotal = str_replace(',', '', Cart::subtotal());
-        $amount = (string) intval($subtotal);
+//        $subtotal = str_replace(',', '', Cart::subtotal());
+//        $amount = (string) intval($subtotal);
+        $amount = "10000";
 //        $orderId = time() ."";
         $orderId = session('momo_order_id');
         $redirectUrl = route('front.paymentSuccess');
@@ -209,6 +210,12 @@ class CartController extends Controller
             return redirect()->route('front.cart');
         }
 
+        $resultCode = $request->query('resultCode');
+
+        if ($resultCode != 0) {
+            return redirect()->route('front.failed', ['orderId' => $request->query('orderId')]);
+        }
+
         $user = Auth::user();
         $subTotal = Cart::subtotal(2, '.', '');
         $discount = 0;
@@ -236,6 +243,8 @@ class CartController extends Controller
             $orderItem->save();
         }
 
+        orderEmail($order->id);
+
         Cart::destroy();
         session()->forget('checkout_data');
 
@@ -247,4 +256,49 @@ class CartController extends Controller
             'id' => $id
         ]);
     }
+
+    public function error($id) {
+        return view ('front.failed', [
+            'id' => $id
+        ]);
+    }
+
+//    public function paymentFailed(Request $request) {
+//        $checkoutData = session('checkout_data');
+//
+//        if (!$checkoutData || !$request->query('orderId')) {
+//            return redirect()->route('front.cart');
+//        }
+//
+//        $user = Auth::user();
+//        $subTotal = Cart::subtotal(2, '.', '');
+//        $discount = 0;
+//        $grandTotal = $subTotal - $discount;
+//
+//        $order = new Order();
+//        $order->user_id = $user->id;
+//        $order->subtotal = $subTotal;
+//        $order->discount = $discount;
+//        $order->grand_total = $grandTotal;
+//        $order->payment_status = 'not paid';
+//        $order->status = 'cancelled';
+//        $order->first_name = $checkoutData['first_name'];
+//        $order->last_name = $checkoutData['last_name'];
+//        $order->email = $checkoutData['email'];
+//        $order->mobile = $checkoutData['mobile'];
+//        $order->save();
+//
+//        foreach (Cart::content() as $item) {
+//            $orderItem = new OrderItem();
+//            $orderItem->order_id = $order->id;
+//            $orderItem->product_id = $item->id;
+//            $orderItem->name = $item->name;
+//            $orderItem->price = $item->price;
+//            $orderItem->save();
+//        }
+//
+//        session()->forget('checkout_data');
+//
+//        return redirect()->route('front.paymentCancelled', $order->id);
+//    }
 }
