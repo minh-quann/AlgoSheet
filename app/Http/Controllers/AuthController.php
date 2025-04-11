@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,6 +25,10 @@ class AuthController extends Controller
         if($validator->passes()) {
 
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+                if (session()->has('url.intended')) {
+                    return redirect(session()->get('url.intended'));
+                }
 
                 return redirect()->route('account.profile');
             } else {
@@ -123,8 +129,8 @@ class AuthController extends Controller
         $user = User::create([
             'email' => $googleUser->getEmail(),
             'name' => $googleUser->getName(),
-            'password' => Hash::make(Str::random(16)), 
-            'role' => 1, 
+            'password' => Hash::make(Str::random(16)),
+            'role' => 1,
         ]);
     }
     Auth::login($user);
@@ -156,5 +162,31 @@ public function redirectToFacebook()
 
     return redirect()->route('account.profile');
 }
+
+    public function myorders() {
+        $data = [];
+        $user = Auth::user();
+
+        $orders =  Order::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
+
+        $data['orders'] = $orders;
+
+        return view('front.account.order', $data);
+    }
+
+    public function orderDetail($id) {
+        $data = [];
+        $user = Auth::user();
+        $order = Order::where('user_id', $user->id)->where('id', $id)->first();
+        $data['order'] = $order;
+
+        $items = OrderItem::where('order_id', $order->id)->get();
+        $data['orderItems'] = $items;
+
+        $orderItemsCount = OrderItem::where('order_id', $order->id)->count();
+        $data['orderItemsCount'] = $orderItemsCount;
+
+        return view('front.account.order-detail', $data);
+    }
 
 }

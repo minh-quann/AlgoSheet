@@ -115,7 +115,7 @@
                                                     <img class="card-img-top" src="{{ asset('front-assets/images/default-150x150.png') }}" alt="">
                                                 @endif
                                             </a>
-                                            <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
+                                            <a onclick="addToWishlist({{ $product->id }})" class="whishlist" href="javascript:void(0);"><i class="far fa-heart"></i></a>
 
                                             <div class="product-action">
                                                 <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }})">

@@ -120,7 +120,7 @@
                                             <img class="card-img-top" src="{{ asset('front-assets/images/default-150x150.png') }}" alt="">
                                         @endif
                                     </a>
-                                    <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
+                                    <a onclick="addToWishlist({{ $product->id }})" class="whishlist" href="javascript:void(0);"><i class="far fa-heart"></i></a>
 
                                     <div class="product-action">
                                         <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }})">
@@ -167,7 +167,7 @@
                                             <img class="card-img-top" src="{{ asset('front-assets/images/default-150x150.png') }}" alt="">
                                         @endif
                                     </a>
-                                    <a class="whishlist" href="222"><i class="far fa-heart"></i></a>
+                                    <a onclick="addToWishlist({{ $product->id }})" class="whishlist" href="javascript:void(0);"><i class="far fa-heart"></i></a>
 
                                     <div class="product-action">
                                         <a class="btn btn-dark" href="javascript:void(0);" onclick="addToCart({{ $product->id }})">
@@ -178,11 +178,10 @@
                                 <div class="card-body text-center mt-3">
                                     <a class="h6 link" href="product.php">{{ $product->name }}</a>
                                     <div class="price mt-2">
-                                        <span class="h5"><strong>{{ $product->price }}₫</strong></span>
+                                        <span class="h5"><strong>{{ number_format($product->price, 0, ',', '.') }} ₫</strong></span>
                                         @if($product->compare_price > 0)
-                                            <span class="h6 text-underline"><del>{{ $product->compare_price }}₫</del></span>
+                                            <span class="h6 text-underline"><del>{{ number_format($product->compare_price, 0, ',', '.') }} ₫</del></span>
                                         @endif
-
                                     </div>
                                 </div>
                             </div>
