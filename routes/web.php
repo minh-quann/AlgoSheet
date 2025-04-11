@@ -16,7 +16,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Http\Request;
-//use Illuminate\Support\Str;
+use Illuminate\Support\Str;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
@@ -57,12 +57,14 @@ Route::middleware(['web'])->group(function () {
 
         Route::group(['middleware' => 'auth'], function() {
             Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
+            Route::get('/change-password', [AuthController::class, 'showChangePasswordForm'])->name('account.changePassword');
+            Route::post('/process-change-password', [AuthController::class, 'changePassword'])->name('account.processChangePassword');
             // Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('account.updateProfile');
             Route::get('/my-orders', [AuthController::class, 'myorders'])->name('account.orders');
             Route::get('/my-wishlist', [AuthController::class, 'wishlist'])->name('account.wishlists');
             Route::post('/remove-product-from-wishlist', [AuthController::class, 'removeProductFromWishlist'])->name('account.removeProductFromWishlist');
             Route::get('/order-detail/{orderId}', [AuthController::class, 'orderDetail'])->name('account.orderDetail');
-            Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
+            Route::post('/logout', [AuthController::class, 'logout'])->name('account.logout');
         });
     });
 });

@@ -110,11 +110,36 @@ class AuthController extends Controller
     // return redirect()->route('account.profile')->with('success', 'Profile updated successfully');
     // }
 
-    public function logout() {
+    
+    public function logout(Request $request) {
         Auth::logout();
-        return redirect()->route('account.login')
-            ->with('success', 'You have been logged out');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('account.login')->with('success', 'You have been logged out');
     }
+    
+    public function showChangePasswordForm(){
+        return view('front.account.change-password');
+    }
+    public function changePassword(Request $request) {
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:8',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+    
+        $user = User::find(Auth::id());
+    
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'Old password is incorrect']);
+        }
+    
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        // Auth::logout();
+        return redirect()->route('account.profile')->with('success', 'Password changed successfully');
+    }
+    
     //google login
     public function redirectToGoogle()
     {

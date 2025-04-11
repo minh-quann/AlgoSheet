@@ -15,6 +15,9 @@
     <section class="section-11">
         <div class="container mt-5">
             <div class="row">
+                <div class="col-md-12">
+                    @include('front.account.common.message')
+                </div>
                 <div class="col-md-3">
                     @include('front.account.common.sidebar')
                 </div>
