@@ -32,11 +32,11 @@ Route::middleware(['web'])->group(function () {
             Route::get('/login', [AuthController::class, 'login'])->name('account.login');
             Route::post('/login', [AuthController::class, 'authenticate'])->name('account.authenticate');
             
-            Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.redirect');
+            Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.login');
             Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
             
             Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('facebook.login');
-            Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
+            Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback'])->name('facebook.callback');
             
             Route::get('/register', [AuthController::class, 'register'])->name('account.register');
             Route::post('/process-register', [AuthController::class, 'processRegister'])->name('account.processRegister');

@@ -131,6 +131,8 @@ class AuthController extends Controller
 
     return redirect()->route('account.profile');
 }
+
+//facebook login
 public function redirectToFacebook()
     {
         return Socialite::driver('facebook')->redirect();
@@ -138,7 +140,7 @@ public function redirectToFacebook()
 
     public function handleFacebookCallback()
 {
-    $facebookUser = Socialite::driver('facebook')->stateless()->user();
+    $facebookUser = Socialite::driver('facebook')->user();
     $user = User::where('email', $facebookUser->getEmail())->first();
 
     if (!$user) {

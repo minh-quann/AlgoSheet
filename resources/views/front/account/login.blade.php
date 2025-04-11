@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="d-grid gap-2">
-                    <a href="{{ route('google.redirect') }}" class="btn btn-light border d-block w-100">
+                    <a href="{{ route('google.login') }}" class="btn btn-light border d-block w-100">
                         <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width:20px; margin-right:10px;">
                         Sign in with Google
                     </a>
