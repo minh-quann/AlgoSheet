@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\admin\AdminLoginController;
 use App\Http\Controllers\admin\HomeController;
 use App\Http\Controllers\admin\CategoryController;
@@ -9,12 +10,13 @@ use App\Http\Controllers\admin\ProductImageController;
 use App\Http\Controllers\admin\SongController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
+use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ShopController;
-use \Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+//use Illuminate\Support\Str;
 
 
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
@@ -23,6 +25,12 @@ Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.p
 Route::get('/cart', [CartController::class, 'cart'])->name('front.cart');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
 Route::post('/delete-item', [CartController::class, 'deleteItem'])->name('front.deleteItem.cart');
+Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');
+Route::get('/thanks/{orderId}', [CartController::class, 'thankyou'])->name('front.thanks');
+Route::get('/error/{orderId}', [CartController::class, 'error'])->name('front.failed');
+Route::post('/prepare-payment', [CartController::class, 'preparePayment'])->name('front.preparePayment');
+Route::get('/payment-success', [CartController::class, 'paymentSuccess'])->name('front.paymentSuccess');
+Route::get('/payment-failed', [CartController::class, 'paymentFailed'])->name('front.paymentFailed');
 
 
 // Authenticate Route
@@ -31,22 +39,26 @@ Route::middleware(['web'])->group(function () {
         Route::group(['middleware' => 'guest'], function() {
             Route::get('/login', [AuthController::class, 'login'])->name('account.login');
             Route::post('/login', [AuthController::class, 'authenticate'])->name('account.authenticate');
+
             
             Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.login');
             Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
-            
+
             Route::get('auth/facebook', [AuthController::class, 'redirectToFacebook'])->name('facebook.login');
             Route::get('auth/facebook/callback', [AuthController::class, 'handleFacebookCallback'])->name('facebook.callback');
-            
+
+
             Route::get('/register', [AuthController::class, 'register'])->name('account.register');
             Route::post('/process-register', [AuthController::class, 'processRegister'])->name('account.processRegister');
-            
+
 
         });
 
         Route::group(['middleware' => 'auth'], function() {
             Route::get('/profile', [AuthController::class, 'profile'])->name('account.profile');
             // Route::post('/profile/update', [AuthController::class, 'updateProfile'])->name('account.updateProfile');
+            Route::get('/my-orders', [AuthController::class, 'myorders'])->name('account.orders');
+            Route::get('/order-detail/{orderId}', [AuthController::class, 'orderDetail'])->name('account.orderDetail');
             Route::get('/logout', [AuthController::class, 'logout'])->name('account.logout');
         });
     });
@@ -97,16 +109,25 @@ Route::middleware(['web'])->group(function () {
 
             // Product Sub-Category Route
             Route::get('/product-subcategories', [ProductSubCategoryController::class, 'index'])->name('product-subcategories.index');
-            
+
             // Product Image Route
             Route::post('/product-images/update', [ProductImageController::class, 'update'])->name('product-images.update');
             Route::delete('/product-images', [ProductImageController::class, 'destroy'])->name('product-images.delete');
 
-            
+            // Order Route
+            Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+            Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+            Route::post('/orders/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
+
+
             Route::get('/getSlug', function (Request $request) {
                 $slug = '';
                 if (!empty($request->title)) {
-                    $slug = Str::slug($request->title);
+                    if (!empty($request->singer)) {
+                        $slug = Str::slug($request->title . '-' . $request->singer);
+                    } else {
+                        $slug = Str::slug($request->title);
+                    }
                 }
 
                 return response()->json([

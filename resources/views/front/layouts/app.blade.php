@@ -40,7 +40,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&family=Raleway:ital,wght@0,400;0,600;0,800;1,200&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!-- Fav Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="#" />
@@ -59,7 +59,12 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left  d-flex justify-content-end align-items-center">
-                <a href="{{ route('account.profile')}}" class="nav-link text-dark">My Account</a>
+                @if (Auth::check())
+                    <a href="{{ route('account.profile') }}" class="nav-link text-dark">My Account</a>
+                @else
+                    <a href="{{ route('account.login') }}" class="nav-link text-dark">Login / Register</a>
+                @endif
+
                 <form action="">
                     <div class="input-group">
                         <input type="text" placeholder="Search For Products" class="form-control" aria-label="Amount (to the nearest dollar)">
@@ -107,7 +112,7 @@
             </div>
 
             <div class="right-nav py-0">
-                <a href="#" class="ml-3 d-flex pt-2">
+                <a href="{{ route('front.cart') }}" class="ml-3 d-flex pt-2">
                     <i class="fas fa-shopping-cart text-primary"></i>
                 </a>
             </div>
@@ -201,13 +206,13 @@
     function addToCart(id) {
 
         $.ajax({
-            url: '#',
+            url: '{{ route('front.addToCart') }}',
             type: 'post',
             data: {id: id},
             dataType: 'json',
             success: function(response) {
                 if (response.status == true) {
-                    window.location.href = "#";
+                    window.location.href = "{{ route('front.cart') }}";
                 } else {
                     alert(response.message);
                 }
