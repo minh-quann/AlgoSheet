@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\SongController;
 use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
 use App\Http\Controllers\admin\OrderController;
+use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
@@ -124,7 +125,9 @@ Route::middleware(['web'])->group(function () {
             Route::get('/orders/{id}', [OrderController::class, 'detail'])->name('orders.detail');
             Route::post('/orders/change-status/{id}', [OrderController::class, 'changeOrderStatus'])->name('orders.changeOrderStatus');
 
-
+            // Settings Route
+            Route::get('/change-password', [SettingController::class, 'showChangePasswordForm'])->name('admin.showChangePasswordForm');
+            Route::post('/process-change-password', [SettingController::class, 'changePassword'])->name('admin.processChangePassword');
             Route::get('/getSlug', function (Request $request) {
                 $slug = '';
                 if (!empty($request->title)) {
