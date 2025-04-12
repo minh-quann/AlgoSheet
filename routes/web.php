@@ -33,7 +33,10 @@ Route::post('/prepare-payment', [CartController::class, 'preparePayment'])->name
 Route::get('/payment-success', [CartController::class, 'paymentSuccess'])->name('front.paymentSuccess');
 Route::get('/payment-failed', [CartController::class, 'paymentFailed'])->name('front.paymentFailed');
 Route::post('/add-to-wishlist', [FrontController::class, 'addToWishlist'])->name('front.addToWishlist');
-
+Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('front.forgotPassword');
+Route::post('/process-forgot-password', [AuthController::class, 'processForgotPassword'])->name('front.processForgotPassword'); 
+Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('front.resetPassword');
+Route::post('/process-reset-password', [AuthController::class, 'processResetPassword'])->name('front.processResetPassword');
 
 // Authenticate Route
 Route::middleware(['web'])->group(function () {
