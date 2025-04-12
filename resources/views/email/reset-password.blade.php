@@ -7,15 +7,19 @@
     <title>Reset Password Email</title>
 </head>
 <body style="font-family: Arial, Helvetica, sans-serif; font-size: 16px">
-    
-    <p>Hello, {{ $formData['user']->name }}</p>
 
-    <h1>You have requested to reset your password</h1>
-    
-    <p>Please click the link below to reset your password:</p>
+    @if(isset($formData['is_admin']) && $formData['is_admin'])
+        <p>Hello Admin {{ $formData['user']->name }},</p>
+        <h1>You've requested to reset your admin account password</h1>
+        <p>Please click the link below to proceed:</p>
+        <a href="{{ route('admin.resetPassword', $formData['token']) }}">Reset Admin Password</a>
+    @else
+        <p>Hi {{ $formData['user']->name }},</p>
+        <h1>You have requested to reset your password</h1>
+        <p>Please click the link below to reset your account password:</p>
+        <a href="{{ route('front.resetPassword', $formData['token']) }}">Reset Password</a>
+    @endif
 
-    <a href="{{ route('front.resetPassword', $formData['token']) }}">Click Here</a>
-
-    <p>Thanks</p>
+    <p style="margin-top: 24px;">Thanks,<br>
 </body>
 </html>

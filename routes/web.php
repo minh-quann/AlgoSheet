@@ -78,6 +78,10 @@ Route::middleware(['web'])->group(function () {
         Route::group(['middleware' => 'admin.guest'], function () {
             Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
             Route::post('/authenticate', [AdminLoginController::class, 'authenticate'])->name('admin.authenticate');
+            Route::get('forgot-password', [AdminLoginController::class, 'forgotPassword'])->name('admin.forgotPassword');
+            Route::post('forgot-password', [AdminLoginController::class, 'processForgotPassword'])->name('admin.processForgotPassword');
+            Route::get('reset-password/{token}', [AdminLoginController::class, 'resetPassword'])->name('admin.resetPassword');
+            Route::post('process-reset-password', [AdminLoginController::class, 'processResetPassword'])->name('admin.processResetPassword');
         });
 
         Route::group(['middleware' => 'admin.auth'], function () {
