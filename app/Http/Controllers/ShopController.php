@@ -15,9 +15,6 @@ class ShopController extends Controller
         $subCategorySelected = '';
         $levelsArray = $request->filled('level') ? explode(',', $request->get('level')) : [];
 
-
-
-
         $categories = Category::orderBy('name', 'ASC')
             ->with('sub_category')
             ->where('status', 1)->get();
@@ -51,6 +48,14 @@ class ShopController extends Controller
 
         }
 
+        if (!empty($request->get('search'))) {
+            $products = $products->where('name', 'like', '%' . $request->get('search') . '%')
+                                ->orWhereHas('songs', function ($query) use ($request) {
+                                    $query->where('title', 'like', '%' . $request->get('search') . '%')
+                                        ->orWhere('composers', 'like', '%' . $request->get('search') . '%')
+                                        ->orWhere('singers', 'like', '%' . $request->get('search') . '%');
+                                });
+        }
 
         if ($request->get('sort')) {
             if ($request->get('sort') == 'latest') {

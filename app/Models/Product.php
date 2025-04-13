@@ -12,4 +12,8 @@ class Product extends Model
     public function product_images() {
         return $this->hasMany(ProductImage::class);
     }
+
+    public function songs() {
+        return $this->belongsTo(Song::class, 'song_id');
+    }
 }

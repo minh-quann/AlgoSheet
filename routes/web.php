@@ -12,6 +12,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\admin\ProductSubCategoryController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FrontController;
@@ -45,7 +46,7 @@ Route::middleware(['web'])->group(function () {
             Route::get('/login', [AuthController::class, 'login'])->name('account.login');
             Route::post('/login', [AuthController::class, 'authenticate'])->name('account.authenticate');
 
-            
+
             Route::get('/auth/google', [AuthController::class, 'redirectToGoogle'])->name('google.login');
             Route::get('/auth/google/callback', [AuthController::class, 'handleGoogleCallback'])->name('google.callback');
 
@@ -135,6 +136,16 @@ Route::middleware(['web'])->group(function () {
             // Settings Route
             Route::get('/change-password', [SettingController::class, 'showChangePasswordForm'])->name('admin.showChangePasswordForm');
             Route::post('/process-change-password', [SettingController::class, 'changePassword'])->name('admin.processChangePassword');
+
+            // Users Route
+            Route::get('/users', [UserController::class, 'index'])->name('users.index');
+            Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+            Route::post('/users', [UserController::class, 'store'])->name('users.store');
+            Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+            Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+            Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.delete');
+
+
             Route::get('/getSlug', function (Request $request) {
                 $slug = '';
                 if (!empty($request->title)) {

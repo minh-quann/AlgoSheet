@@ -192,7 +192,10 @@
 
             url += '&price_min='+slider.result.from+'&price_max='+slider.result.to;
 
-
+            var keyword = $("#search").val();
+            if (keyword.length > 0) {
+                url += '&search='+keyword;
+            }
             // Sorting
             url += '&sort='+$("#sort").val();
 

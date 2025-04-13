@@ -97,6 +97,35 @@
         </div>
     </section>
 
+    <section class="section-3">
+        <div class="container">
+            <div class="section-title">
+                <h2>Categories</h2>
+            </div>
+            <div class="row pb-3">
+                @if(getCategories()->isNotEmpty())
+                    @foreach(getCategories() as $category)
+                        <div class="col-lg-3">
+                            <div class="cat-card">
+                                <div class="left">
+                                    @if($category->image != "")
+                                        <img src="{{ asset('uploads/category/thumb/'.$category->image) }}" alt="" class="img-fluid">
+                                    @endif
+
+                                </div>
+                                <div class="right">
+                                    <div class="cat-data">
+                                        <h2>{{ $category->name }}</h2>
+                                        <p>100 Products</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+        </div>
+    </section>
 
 
     <section class="section-4 pt-5">
@@ -129,7 +158,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body text-center mt-3">
-                                    <a class="h6 link" href="product.php">{{ $product->name }}</a>
+                                    <a class="h6 link" href="{{ route('front.product', $product->slug) }}">{{ $product->name }}</a>
                                     <div class="price mt-2">
                                         <span class="h5"><strong>{{ number_format($product->price, 0, ',', '.') }} ₫</strong></span>
                                         @if($product->compare_price > 0)
@@ -176,7 +205,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body text-center mt-3">
-                                    <a class="h6 link" href="product.php">{{ $product->name }}</a>
+                                    <a class="h6 link" href="{{ route('front.product', $product->slug) }}">{{ $product->name }}</a>
                                     <div class="price mt-2">
                                         <span class="h5"><strong>{{ number_format($product->price, 0, ',', '.') }} ₫</strong></span>
                                         @if($product->compare_price > 0)
