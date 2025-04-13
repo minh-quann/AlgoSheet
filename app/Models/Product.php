@@ -16,4 +16,8 @@ class Product extends Model
     public function songs() {
         return $this->belongsTo(Song::class, 'song_id');
     }
+
+    public function product_ratings() {
+        return $this->hasMany(ProductRating::class)->where('status' , 1);
+    }
 }

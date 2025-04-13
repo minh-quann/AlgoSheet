@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductRating;
 use App\Models\Song;
 use App\Models\SubCategory;
 use App\Models\TempImage;
@@ -250,6 +251,36 @@ class ProductController extends Controller
         return response()->json([
             'tags' => $tempProduct,
             'status' => true
+        ]);
+    }
+
+    public function productRatings(Request $request) {
+        $ratings = ProductRating::select('product_ratings.*', 'products.name as productName')
+            ->orderBy('product_ratings.created_at', 'desc');
+        $ratings = $ratings->leftJoin('products', 'products.id', 'product_ratings.product_id');
+
+        if ($request->get('keyword') != "") {
+            $ratings = $ratings->orWhere('products.name', 'like', '%'.$request->get('keyword').'%');
+            $ratings = $ratings->orWhere('product_ratings.username', 'like', '%'.$request->get('keyword').'%');
+        }
+
+        $ratings = $ratings->paginate(10);
+
+        return view('admin.product.ratings', [
+            'ratings' => $ratings
+        ]);
+    }
+
+    public function changeRatingStatus(Request $request) {
+        $productRating = ProductRating::find($request->id);
+        $productRating->status = $request->status;
+        $productRating->save();
+
+        session()->flash('success', 'Status changed successfully');
+
+        return response()->json([
+           'status' => true,
+
         ]);
     }
 }

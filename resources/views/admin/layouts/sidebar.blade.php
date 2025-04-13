@@ -44,17 +44,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('products.ratings') }}" class="nav-link">
+                        <i class="nav-icon fa fa-star" aria-hidden="true"></i>
+                        <p>Ratings</p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('orders.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-shopping-bag"></i>
                         <p>Orders</p>
                     </a>
                 </li>
-{{--                <li class="nav-item">--}}
-{{--                    <a href="discount.html" class="nav-link">--}}
-{{--                        <i class="nav-icon  fa fa-percent" aria-hidden="true"></i>--}}
-{{--                        <p>Discount</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+
                 <li class="nav-item">
                     <a href="{{ route('users.index') }}" class="nav-link">
                         <i class="nav-icon  fas fa-users"></i>

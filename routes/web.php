@@ -24,20 +24,26 @@ use Illuminate\Support\Str;
 Route::get('/', [FrontController::class, 'index'])->name('front.home');
 Route::get('/shop/{categorySlug?}/{subCategorySlug?}', [ShopController::class, 'index'])->name('front.shop');
 Route::get('/product/{slug}', [ShopController::class, 'product'])->name('front.product');
+
 Route::get('/cart', [CartController::class, 'cart'])->name('front.cart');
 Route::post('/add-to-cart', [CartController::class, 'addToCart'])->name('front.addToCart');
 Route::post('/delete-item', [CartController::class, 'deleteItem'])->name('front.deleteItem.cart');
+
 Route::get('/checkout', [CartController::class, 'checkout'])->name('front.checkout');
 Route::get('/thanks/{orderId}', [CartController::class, 'thankyou'])->name('front.thanks');
 Route::get('/error/{orderId}', [CartController::class, 'error'])->name('front.failed');
 Route::post('/prepare-payment', [CartController::class, 'preparePayment'])->name('front.preparePayment');
 Route::get('/payment-success', [CartController::class, 'paymentSuccess'])->name('front.paymentSuccess');
 Route::get('/payment-failed', [CartController::class, 'paymentFailed'])->name('front.paymentFailed');
+
 Route::post('/add-to-wishlist', [FrontController::class, 'addToWishlist'])->name('front.addToWishlist');
+
 Route::get('/forgot-password', [AuthController::class, 'forgotPassword'])->name('front.forgotPassword');
-Route::post('/process-forgot-password', [AuthController::class, 'processForgotPassword'])->name('front.processForgotPassword'); 
+Route::post('/process-forgot-password', [AuthController::class, 'processForgotPassword'])->name('front.processForgotPassword');
 Route::get('/reset-password/{token}', [AuthController::class, 'resetPassword'])->name('front.resetPassword');
 Route::post('/process-reset-password', [AuthController::class, 'processResetPassword'])->name('front.processResetPassword');
+
+Route::post('/save-rating/{productId}', [ShopController::class, 'saveRating'])->name('front.saveRating');
 
 // Authenticate Route
 Route::middleware(['web'])->group(function () {
@@ -120,6 +126,8 @@ Route::middleware(['web'])->group(function () {
             Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
             Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.delete');
             Route::get('/get-products', [ProductController::class, 'getProducts'])->name('products.getProducts');
+            Route::get('/ratings', [ProductController::class, 'productRatings'])->name('products.ratings');
+            Route::get('/change-rating-status', [ProductController::class, 'changeRatingStatus'])->name('products.changeRatingStatus');
 
             // Product Sub-Category Route
             Route::get('/product-subcategories', [ProductSubCategoryController::class, 'index'])->name('product-subcategories.index');
