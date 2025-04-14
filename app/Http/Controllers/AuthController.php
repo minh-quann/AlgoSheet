@@ -28,20 +28,29 @@ class AuthController extends Controller
         ]);
 
         if($validator->passes()) {
+            $user = User::where('email', $request->email)->first();
 
-            if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
-
-                if (session()->has('url.intended')) {
-                    return redirect(session()->get('url.intended'));
-                }
-
-                return redirect()->route('account.profile');
-            } else {
-//                session()->flash('error', 'Either email/password is incorrect.');
+            if ($user && $user->status == 0) {
                 return redirect()->route('account.login')
                     ->withInput($request->only('email'))
-                    ->with('error', 'Either email/password is incorrect');
+                    ->with('error', 'Your account has been blocked');
+            } else {
+                if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+                    if (session()->has('url.intended')) {
+                        return redirect(session()->get('url.intended'));
+                    }
+
+                    return redirect()->route('account.profile');
+                } else {
+//                session()->flash('error', 'Either email/password is incorrect.');
+                    return redirect()->route('account.login')
+                        ->withInput($request->only('email'))
+                        ->with('error', 'Either email/password is incorrect');
+                }
             }
+
+
 
         } else {
             return redirect()->route('account.login')
@@ -115,14 +124,14 @@ class AuthController extends Controller
     // return redirect()->route('account.profile')->with('success', 'Profile updated successfully');
     // }
 
-    
+
     public function logout(Request $request) {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('account.login')->with('success', 'You have been logged out');
     }
-    
+
     public function showChangePasswordForm(){
         return view('front.account.change-password');
     }
@@ -132,18 +141,18 @@ class AuthController extends Controller
             'new_password' => 'required|min:8',
             'confirm_password' => 'required|same:new_password',
         ]);
-    
+
         $user = User::find(Auth::id());
-    
+
         if (!Hash::check($request->old_password, $user->password)) {
             return back()->withErrors(['old_password' => 'Old password is incorrect']);
         }
-    
+
         $user->password = Hash::make($request->new_password);
         $user->save();
         return redirect()->route('account.profile')->with('success', 'Password changed successfully');
     }
-    
+
     //google login
     public function redirectToGoogle()
     {
@@ -242,7 +251,7 @@ public function redirectToFacebook()
             'user' => $user,
             'mailSubject' => 'You have requested to reset your password'
         ];
-        
+
         Mail::to($request->email)->send(new ResetPasswordEmail($formData));
         return redirect()->route('front.forgotPassword')->with('success', 'We have sent you a password reset link to your email address.');
     }
@@ -271,13 +280,13 @@ public function redirectToFacebook()
         ]);
 
         if($validator->fails()){
-            return redirect()->route('front.resetPassword', $token)->withErrors($validator); 
+            return redirect()->route('front.resetPassword', $token)->withErrors($validator);
         }
 
         User::where('id', $user->id)->update([
             'password' => Hash::make($request->new_password),
         ]);
         DB::table('password_reset_tokens')->where('email', $user->email)->delete();
-        return redirect()->route('account.login')->with('success', 'Password has been reset successfully. You can now login with your new password.'); 
+        return redirect()->route('account.login')->with('success', 'Password has been reset successfully. You can now login with your new password.');
     }
 }

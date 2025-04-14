@@ -155,9 +155,9 @@ class CartController extends Controller
         $accessKey = 'klm05TvNBzhg7h7j';
         $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
         $orderInfo = "Thanh toán qua MoMo";
-//        $subtotal = str_replace(',', '', Cart::subtotal());
-//        $amount = (string) intval($subtotal);
-        $amount = "10000";
+        $subtotal = str_replace(',', '', Cart::subtotal());
+        $amount = (string) intval($subtotal);
+//        $amount = "10000";
 //        $orderId = time() ."";
         $orderId = session('momo_order_id');
         $redirectUrl = route('front.paymentSuccess');

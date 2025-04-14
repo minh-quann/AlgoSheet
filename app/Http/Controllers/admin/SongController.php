@@ -92,7 +92,11 @@ class SongController extends Controller
             $song->slug = $request->slug;
             $song->composers = $request->composer;
             $song->singers = $request->singer;
-            $song->status = $request->status;
+            $newStatus = $request->status;
+            if ($song->status != $newStatus) {
+                $song->products()->update(['status' => $newStatus]);
+            }
+            $song->status =  $newStatus;
             $song->save();
 
             $request->session()->flash('success', 'Song updated successfully.');

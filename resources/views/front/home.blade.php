@@ -116,7 +116,6 @@
                                 <div class="right">
                                     <div class="cat-data">
                                         <h2>{{ $category->name }}</h2>
-                                        <p>100 Products</p>
                                     </div>
                                 </div>
                             </div>
